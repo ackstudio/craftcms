@@ -1,0 +1,47 @@
+# Environment files
+.env
+.env.*
+!.env.example.*
+
+# Dependencies
+/vendor/
+/node_modules/
+
+# CraftCMS
+/config/license.key
+/config/project/*
+
+# Storage (user-generated content and runtime files)
+/storage/*
+!/storage/.gitignore
+
+# Web assets
+/web/cpresources/
+
+# Build artifacts
+/dist/
+/build/
+
+# IDE & Editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
