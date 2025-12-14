@@ -22,6 +22,8 @@
 # Build artifacts
 /dist/
 /build/
+/.vite
+/.vite/*
 
 # IDE & Editor files
 .idea/

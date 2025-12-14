@@ -6,39 +6,132 @@ An opinionated CraftCMS 5 boilerplate for rapid project setup and development. T
 
 ## Requirements
 
-- PHP 8.3 or higher
-- [DDEV](https://ddev.readthedocs.io/) for local development
-- MySQL 8.0 or higher / PostgreSQL 13 or higher
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [DDEV](https://ddev.readthedocs.io/en/stable/users/install/ddev-installation/) for local development
 
-## Installation
+> DDEV handles PHP 8.3, MySQL 8.0, and Node.js 22 automatically inside containers.
 
-1. Clone this repository:
+---
+
+## Quick Start (Public Clone)
+
+Follow these steps to clone this boilerplate and start a new project:
+
+### 1. Clone the Repository
+
 ```bash
-git clone <repository-url> <project-name>
-cd <project-name>
+git clone https://github.com/ackstudio/craftcms.git my-project
+cd my-project
 ```
 
-2. Start DDEV:
+### 2. Rename the Project
+
+Update the DDEV project name in `.ddev/config.yaml`:
+
+```yaml
+name: my-project  # Change "craftcms" to your project name
+```
+
+> **Important**: The project name must be lowercase with no spaces. Use hyphens for multi-word names (e.g., `my-awesome-site`).
+
+### 3. Remove Git History (Optional)
+
+Start fresh with your own Git history:
+
+```bash
+rm -rf .git
+git init
+git add .
+git commit -m "Initial commit from CraftCMS boilerplate"
+```
+
+### 4. Start DDEV
+
 ```bash
 ddev start
 ```
 
-3. Install dependencies:
+This will:
+- Download and configure Docker containers
+- Set up PHP 8.3, MySQL 8.0, and Node.js 22
+- Create your local development URL at `https://my-project.ddev.site`
+
+### 5. Install Dependencies
+
 ```bash
 ddev composer install
+ddev npm install
 ```
 
-4. Copy and configure environment file:
+### 6. Configure Environment
+
 ```bash
 cp .env.example.dev .env
 ```
 
-5. Run the CraftCMS installer:
+### 7. Install Craft CMS
+
 ```bash
 ddev craft install
 ```
 
-Follow the prompts to set up your admin account and site settings.
+Follow the prompts to:
+- Set your site name
+- Set your site URL (use `https://my-project.ddev.site`)
+- Create your admin account (username, email, password)
+
+### 8. Start Development Server
+
+```bash
+ddev npm run dev
+```
+
+### 9. Access Your Site
+
+- **Frontend**: https://my-project.ddev.site
+- **Admin Panel**: https://my-project.ddev.site/admin
+
+---
+
+## One-Liner Setup (After Clone)
+
+For experienced users, here's the quick setup after cloning and renaming the project:
+
+```bash
+ddev start && ddev composer install && ddev npm install && cp .env.example.dev .env && ddev craft install
+```
+
+---
+
+## Troubleshooting
+
+### Port Conflicts
+If you get port errors, another service may be using ports 80/443:
+```bash
+ddev poweroff
+# Stop conflicting services (Apache, nginx, etc.)
+ddev start
+```
+
+### Database Connection Issues
+If Craft can't connect to the database:
+```bash
+ddev restart
+```
+
+### Vite Not Loading Assets
+Make sure the Vite dev server is running:
+```bash
+ddev npm run dev
+```
+
+### Reset Everything
+To start fresh:
+```bash
+ddev delete -O  # Removes containers and database
+ddev start
+ddev craft install
+```
 
 ## Environment Configuration
 
