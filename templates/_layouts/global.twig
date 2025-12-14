@@ -1,0 +1,12 @@
+{% extends '_layouts/base' %}
+
+{% block body %}
+  <div class="flex flex-col min-h-screen">
+    {% include '_components/global/header' %}
+    <main>
+      {% block site %}{% endblock %}
+    </main>
+    {% include '_components/global/footer' %}
+  </div>
+  {% block footJs %}{% endblock %}
+{% endblock %}

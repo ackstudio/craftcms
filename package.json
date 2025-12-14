@@ -21,6 +21,7 @@
   "homepage": "https://github.com/ackstudio/craftcms#readme",
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.18",
+    "rollup-plugin-critical": "^1.0.15",
     "tailwindcss": "^4.1.18",
     "vite": "^7.2.7",
     "vite-plugin-restart": "^2.0.0"

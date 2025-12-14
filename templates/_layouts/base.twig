@@ -1,0 +1,25 @@
+{%- minify -%}
+  <!DOCTYPE html>
+  <html class="antialiased scroll-smooth" lang="{{ craft.app.language|slice(0,2) }}">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to Craft CMS</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {# Favicons #}
+    {# {% include '_layouts/favicons' ignore missing with {} only %} #}
+
+    {# CSS / JS #}
+    {# <script type="module" src="/js/datastar-pro.js"></script> #}
+    {# <script type="module" src="/js/datastar-inspector.js"></script> #}
+    {{ craft.vite.includeCriticalCssTags() }}
+    {{ craft.vite.script('/src/index.ts') }}
+
+    {# Head JS #}
+    {% block headJS %}{% endblock %}
+  </head>
+  <body>
+  {% block body %}{% endblock %}
+  </body>
+  </html>
+{%- endminify -%}

@@ -1,6 +1,7 @@
 import * as path from 'path'
+import PluginCritical from 'rollup-plugin-critical';
 import tailwindcss from '@tailwindcss/vite'
-import viteRestart from 'vite-plugin-restart';
+import ViteRestart from 'vite-plugin-restart';
 
 export default ({ command }) => ({
   base: command === 'serve' ? '' : '/dist/',
@@ -26,12 +27,20 @@ export default ({ command }) => ({
     strictPort: true,
     origin: `${process.env.DDEV_PRIMARY_URL}:3000`,
     cors: {
-      origin: /https?:\/\/([A-Za-z0-9\-\.]+)?(localhost|\.local|\.test|\.site)(?::\d+)?$/
-    }
+      origin: /https?:\/\/([A-Za-z0-9\-\.]+)?(\.ddev\.site)(?::\d+)?$/,
+    },
   },
   plugins: [
+    PluginCritical({
+      criticalUrl: process.env.DDEV_PRIMARY_URL,
+      criticalBase: './web/dist/criticalcss/',
+      criticalPages: [
+        { uri: '', template: '_pages/homepage/index' },
+      ],
+      criticalConfig: {},
+    }),
     tailwindcss(),
-    viteRestart({
+    ViteRestart({
       reload: [
         'templates/**/*',
         'src/**/*',
