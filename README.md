@@ -1,6 +1,6 @@
 # CraftCMS Boilerplate
 
-**v1.0.0**
+**v1.0.1**
 
 An opinionated CraftCMS 5 boilerplate for rapid project setup and development. This boilerplate provides a clean, production-ready foundation for building client websites.
 
@@ -133,13 +133,11 @@ ddev craft install
 
 ## Environment Configuration
 
-The boilerplate includes environment templates for different deployment stages:
+Copy the environment template and configure for your setup:
 
-- `.env.example.dev` - Local development environment
-- `.env.example.staging` - Staging environment
-- `.env.example.production` - Production environment
-
-Copy the appropriate template to `.env` and update the values according to your environment.
+```bash
+cp .env.example.dev .env
+```
 
 ### Key Environment Variables
 
