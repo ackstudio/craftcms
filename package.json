@@ -1,0 +1,29 @@
+{
+  "name": "craftcms",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "An opinionated CraftCMS 5 boilerplate for rapid project setup and development. This boilerplate provides a clean, production-ready foundation for building client websites.",
+  "main": "vite.config.js",
+  "scripts": {
+    "dev": "vite --port 3000",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ackstudio/craftcms.git"
+  },
+  "author": "ACK STUDIO",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ackstudio/craftcms/issues"
+  },
+  "homepage": "https://github.com/ackstudio/craftcms#readme",
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.18",
+    "rollup-plugin-critical": "^1.0.15",
+    "tailwindcss": "^4.1.18",
+    "vite": "^7.2.7",
+    "vite-plugin-restart": "^2.0.0"
+  }
+}
