@@ -1,0 +1,21 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: e594fffd-e54b-4cb6-974e-9db3cff75423 # Homepage
+handle: homepage
+maxAuthors: 1
+name: Homepage
+previewTargets:
+  -
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  9782abbd-69c3-4851-953b-3f821eab63bc: # CraftCMS
+    enabledByDefault: true
+    hasUrls: true
+    template: _pages/homepage/index.twig
+    uriFormat: __home__
+type: single

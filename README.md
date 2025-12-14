@@ -13,23 +13,21 @@ An opinionated CraftCMS 5 boilerplate for rapid project setup and development. T
 
 ---
 
-## Quick Start (Public Clone)
+## Quick Start
 
 Follow these steps to clone this boilerplate and start a new project:
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/ackstudio/craftcms.git my-project
-cd my-project
+git clone https://github.com/ackstudio/craftcms.git <your-project-name>
+cd <your-project-name>
 ```
 
 ### 2. Rename the Project
 
-Update the DDEV project name in `.ddev/config.yaml`:
-
-```yaml
-name: my-project  # Change "craftcms" to your project name
+```bash
+ddev config --project-name=<your-project-name>
 ```
 
 > **Important**: The project name must be lowercase with no spaces. Use hyphens for multi-word names (e.g., `my-awesome-site`).
@@ -54,7 +52,7 @@ ddev start
 This will:
 - Download and configure Docker containers
 - Set up PHP 8.3, MySQL 8.0, and Node.js 22
-- Create your local development URL at `https://my-project.ddev.site`
+- Create your local development URL at `https://<your-project-name>.ddev.site`
 
 ### 5. Install Dependencies
 
@@ -77,7 +75,7 @@ ddev craft install
 
 Follow the prompts to:
 - Set your site name
-- Set your site URL (use `https://my-project.ddev.site`)
+- Set your site URL (use `https://<your-project-name>.ddev.site`)
 - Create your admin account (username, email, password)
 
 ### 8. Start Development Server
@@ -88,8 +86,8 @@ ddev npm run dev
 
 ### 9. Access Your Site
 
-- **Frontend**: https://my-project.ddev.site
-- **Admin Panel**: https://my-project.ddev.site/admin
+- **Frontend**: `https://<your-project-name>.ddev.site`
+- **Admin Panel**: `https://<your-project-name>.ddev.site/admin`
 
 ---
 

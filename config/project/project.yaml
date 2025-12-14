@@ -1,0 +1,34 @@
+dateModified: 1765704757
+email:
+  fromEmail: admin@craftcms.com
+  fromName: CraftCMS
+  transportType: craft\mail\transportadapters\Sendmail
+meta:
+  __names__:
+    3bd22831-710a-4f9a-8fe1-0d86c908c086: CraftCMS # CraftCMS
+    113cb49b-6325-4775-a656-a900e56f5514: Homepage # Homepage
+    9782abbd-69c3-4851-953b-3f821eab63bc: CraftCMS # CraftCMS
+    e594fffd-e54b-4cb6-974e-9db3cff75423: Homepage # Homepage
+plugins:
+  minify:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  vite:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+system:
+  edition: solo
+  live: true
+  name: CraftCMS
+  retryDuration: null
+  schemaVersion: 5.8.0.3
+  timeZone: Asia/Hong_Kong
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  require2fa: false
+  requireEmailVerification: true
