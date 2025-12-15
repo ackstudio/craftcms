@@ -11,6 +11,13 @@ An opinionated CraftCMS 5 boilerplate for rapid project setup and development. T
 
 > DDEV handles PHP 8.3, MySQL 8.0, and Node.js 22 automatically inside containers.
 
+## Plugins Included
+
+| Plugin | Version | Description |
+|--------|---------|-------------|
+| [craft-vite](https://nystudio107.com/docs/vite/) | 5.0.1 | Vite integration for modern asset bundling with HMR |
+| [craft-minify](https://nystudio107.com/plugins/minify) | 5.0.0 | HTML minification for production |
+
 ---
 
 ## Quick Start
@@ -38,9 +45,6 @@ Start fresh with your own Git history:
 
 ```bash
 rm -rf .git
-git init
-git add .
-git commit -m "Initial commit from CraftCMS boilerplate"
 ```
 
 ### 4. Start DDEV
@@ -48,11 +52,6 @@ git commit -m "Initial commit from CraftCMS boilerplate"
 ```bash
 ddev start
 ```
-
-This will:
-- Download and configure Docker containers
-- Set up PHP 8.3, MySQL 8.0, and Node.js 22
-- Create your local development URL at `https://<your-project-name>.ddev.site`
 
 ### 5. Install Dependencies
 
@@ -88,93 +87,28 @@ ddev npm run dev
 
 - **Frontend**: `https://<your-project-name>.ddev.site`
 - **Admin Panel**: `https://<your-project-name>.ddev.site/admin`
-
 ---
 
-## One-Liner Setup (After Clone)
+## Development Workflow
 
-For experienced users, here's the quick setup after cloning and renaming the project:
-
+### Starting the project
 ```bash
-ddev start && ddev composer install && ddev npm install && cp .env.example.dev .env && ddev craft install
-```
-
----
-
-## Troubleshooting
-
-### Port Conflicts
-If you get port errors, another service may be using ports 80/443:
-```bash
-ddev poweroff
-# Stop conflicting services (Apache, nginx, etc.)
 ddev start
 ```
 
-### Database Connection Issues
-If Craft can't connect to the database:
-```bash
-ddev restart
-```
-
-### Vite Not Loading Assets
-Make sure the Vite dev server is running:
+### Development server
+Start Vite dev server with hot module replacement:
 ```bash
 ddev npm run dev
 ```
 
-### Reset Everything
-To start fresh:
+### Production build
+Build optimized assets for production:
 ```bash
-ddev delete -O  # Removes containers and database
-ddev start
-ddev craft install
+ddev npm run build
 ```
 
-## Environment Configuration
-
-Copy the environment template and configure for your setup:
-
-```bash
-cp .env.example.dev .env
-```
-
-### Key Environment Variables
-
-```env
-# Database
-CRAFT_DB_DRIVER=mysql
-CRAFT_DB_SERVER=db
-CRAFT_DB_PORT=3306
-CRAFT_DB_DATABASE=db
-CRAFT_DB_USER=db
-CRAFT_DB_PASSWORD=db
-
-# General
-CRAFT_SECURITY_KEY=<generate-secure-key>
-CRAFT_ENVIRONMENT=dev
-CRAFT_DEV_MODE=true
-
-# Site URL
-PRIMARY_SITE_URL=https://<project-name>.ddev.site
-```
-
-## Development Workflow
-
-### Starting the project:
-```bash
-ddev start
-```
-
-### Access the control panel:
-Visit `https://<project-name>.ddev.site/admin` in your browser.
-
-### Running Craft CLI commands:
-```bash
-ddev craft <command>
-```
-
-### Stopping the project:
+### Stopping the project
 ```bash
 ddev stop
 ```
@@ -188,44 +122,14 @@ ddev stop
 ├── templates/          # Twig templates
 ├── web/                # Public web root
 │   └── index.php       # Application entry point
+├── src/                # Frontend source files
+│   ├── index.ts        # Main entry point
+│   └── css/style.css   # Main stylesheet (Tailwind)
+├── vite.config.js      # Vite configuration
 ├── .env                # Environment variables (gitignored)
 ├── composer.json       # PHP dependencies
 └── craft               # Craft console application
 ```
-
-## Vite & Asset Pipeline
-
-This boilerplate uses [Vite](https://vitejs.dev/) with [nystudio107/craft-vite](https://nystudio107.com/docs/vite/) for asset bundling.
-
-### Frontend Dependencies
-
-Install Node.js dependencies:
-```bash
-ddev npm install
-```
-
-### Development Server
-
-Start Vite dev server with hot module replacement:
-```bash
-ddev npm run dev
-```
-
-### Production Build
-
-Build optimized assets for production:
-```bash
-ddev npm run build
-```
-
-### Key Files
-
-| File | Purpose |
-|------|---------|
-| `vite.config.js` | Vite configuration |
-| `config/vite.php` | Craft Vite plugin settings |
-| `src/index.ts` | Main entry point |
-| `src/css/style.css` | Main stylesheet (Tailwind) |
 
 ## Critical CSS
 
@@ -283,46 +187,3 @@ This setup uses flat CSS imports (without `@layer`) for Penthouse compatibility:
 ```
 
 > **Note**: Using `.css` imports bypasses Tailwind's cascade layers. This is required because Penthouse cannot parse `@layer` rules.
-
-## Useful Commands
-
-### Clear caches:
-```bash
-ddev craft clear-caches/all
-```
-
-### Run database migrations:
-```bash
-ddev craft migrate/all
-```
-
-### Generate a security key:
-```bash
-ddev craft setup/security-key
-```
-
-### Project config sync:
-```bash
-ddev craft project-config/apply
-```
-
-## Deployment
-
-1. Set `CRAFT_DEV_MODE=false` in your production `.env`
-2. Set `CRAFT_ENVIRONMENT=production`
-3. Generate a unique `CRAFT_SECURITY_KEY`
-4. Configure your database credentials
-5. Run `composer install --no-dev --optimize-autoloader`
-6. Run `npm install && npm run build` (generates assets + critical CSS)
-7. Run `craft migrate/all`
-8. Run `craft project-config/apply`
-
-> **Important**: The production build must run on a server where the site is accessible (for critical CSS generation). For CI/CD pipelines, you may need to build critical CSS separately or use a staging URL.
-
-## Support
-
-For CraftCMS documentation, visit [craftcms.com/docs](https://craftcms.com/docs)
-
-## License
-
-[Add your license here]
