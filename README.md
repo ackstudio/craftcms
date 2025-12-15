@@ -1,6 +1,6 @@
 # CraftCMS Boilerplate
 
-**v1.0.1**
+**v1.0.2**
 
 An opinionated CraftCMS 5 boilerplate for rapid project setup and development. This boilerplate provides a clean, production-ready foundation for building client websites.
 
